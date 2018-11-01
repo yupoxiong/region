@@ -24,7 +24,7 @@ Route::alias('region','\yupoxiong\region\Region');
 
 ##### 获取地区(最常用的方式)
  * url `/region/getRegion`
- * 参数 parent_id，默认0获取省份，传入上级id即可获取该id对应的下级
+ * 参数 parent_id，可不传(默认0)获取省份，传入上级id即可获取该id对应的下级
 
 ##### 获取省
  * url `/region/getProvince`
