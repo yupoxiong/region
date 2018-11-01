@@ -10,7 +10,7 @@ composer install yupoxiong/region
 
 ##### 第二步：创建数据表
 * 方法一：用数据库工具将regions.sql(编码utf8mb4)导入到您的数据库，并修改表前缀。
-* 方法二：复制src/migrations目录下的数据库迁移文件到TP迁移目录(一般是/database/migrations/)，将region.json复制到项目根目录，运行TP自带迁移命令创建表
+* 方法二：复制src/migrations目录下的数据库迁移文件到TP迁移目录(一般是/database/migrations/)，将regions.json复制到项目根目录，运行TP自带迁移命令创建表
 
 
 #### 添加路由
