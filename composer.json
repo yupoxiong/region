@@ -1,0 +1,27 @@
+{
+    "name": "yupoxiong/region",
+    "description": "ThinkPHP省市区(县)街道四级联动扩展",
+    "homepage": "https://github.com/yupoxiong/region",
+    "type": "library",
+    "license": "Apache-2.0",
+    "keywords": [
+        "region",
+        "thinkphp",
+        "省市区"
+    ],
+    "authors": [
+        {
+            "name": "yupoxiong",
+            "email": "i@yufuping.com",
+            "homepage": "https://www.yufuping.com"
+        }
+    ],
+    "require": {
+        "php":">=5.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "yupoxiong\\region\\": "src"
+        }
+    }
+}
