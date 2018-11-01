@@ -17,7 +17,7 @@ composer install yupoxiong/region
 TP5.0在`/application/route.php`中追加，TP5.1在`/route/route.php`中追加
 
 ```
-Route::alias('region','\yupoxiong\region\src\Region');
+Route::alias('region','\yupoxiong\region\Region');
 ```
 
 #### 使用
