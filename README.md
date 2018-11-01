@@ -5,7 +5,7 @@
 ##### 第一步：安装扩展
 composer运行扩展安装命令
 ```
-composer install yupoxiong/region
+composer require yupoxiong/region
 ```
 
 ##### 第二步：创建数据表
