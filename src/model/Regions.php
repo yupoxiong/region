@@ -43,22 +43,16 @@ class Regions extends Model
             ->select();
     }
 
-    /**
-     *
-     * @param int $id
-     * @return array|\PDOStatement|string|\think\Collection
-     */
-    public function getProvince($id = 0)
+
+    public function getProvince()
     {
-        $model = $this
+        return $this
             ->where('level', 1)
             ->field($this->config['field'])
-            ->cache($this->config['cache']);
-        if ($id > 0) {
-            $model->where('id', $id);
-        }
-        return $model->select();
+            ->cache($this->config['cache'])
+            ->select();
     }
+
 
     public function getCity($parent_id)
     {
@@ -70,6 +64,7 @@ class Regions extends Model
             ->select();
     }
 
+
     public function getDistrict($parent_id)
     {
         return $this
@@ -79,6 +74,7 @@ class Regions extends Model
             ->cache($this->config['cache'])
             ->select();
     }
+
 
     public function getStreet($parent_id)
     {
@@ -90,6 +86,7 @@ class Regions extends Model
             ->select();
     }
 
+
     public function searchRegion($keywords, $parent_id = 0)
     {
         return $this
@@ -100,16 +97,17 @@ class Regions extends Model
             ->select();
     }
 
-    public function searchProvince($keywords, $parent_id = 0)
+
+    public function searchProvince($keywords)
     {
         return $this
             ->where('level', 1)
-            ->where('parent_id', $parent_id)
             ->whereLike('name|initial|pinyin', '%' . $keywords . '%')
             ->field($this->config['field'])
             ->cache($this->config['cache'])
             ->select();
     }
+
 
     public function searchCity($keywords, $parent_id = 0)
     {
@@ -122,6 +120,7 @@ class Regions extends Model
             ->select();
     }
 
+
     public function searchDistrict($keywords, $parent_id = 0)
     {
         return $this
@@ -132,6 +131,7 @@ class Regions extends Model
             ->cache($this->config['cache'])
             ->select();
     }
+
 
     public function searchStreet($keywords, $parent_id = 0)
     {

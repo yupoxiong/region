@@ -19,51 +19,51 @@ class Region
 
     public function getRegion($parent_id=0)
     {
-        return $this->region->getRegion($parent_id);
+        return json($this->region->getRegion($parent_id));
     }
 
-    public function getProvince($province_id=0)
+    public function getProvince()
     {
-        return $this->region->getProvince($province_id);
+        return json($this->region->getProvince());
     }
 
     public function getCity($parent_id=0)
     {
-        return $this->region->getCity($parent_id);
+        return json($this->region->getCity($parent_id));
     }
 
     public function getDistrict($parent_id=0)
     {
-        return $this->region->getDistrict($parent_id);
+        return json($this->region->getDistrict($parent_id));
     }
 
     public function getStreet($parent_id=0)
     {
-        return $this->region->getStreet($parent_id);
+        return json($this->region->getStreet($parent_id));
     }
 
-    public function searchRegion($keywords='jn')
+    public function searchRegion($keywords='jn',$parent_id)
     {
-        return $this->region->searchRegion($keywords);
+        return json($this->region->searchRegion($keywords,$parent_id));
     }
 
     public function searchProvince($keywords='sd')
     {
-        return $this->region->searchProvince($keywords);
+        return json($this->region->searchProvince($keywords));
     }
 
-    public function searchCity($keywords='jn')
+    public function searchCity($keywords='jn',$parent_id)
     {
-        return $this->region->searchCity($keywords);
+        return json($this->region->searchCity($keywords,$parent_id));
     }
 
-    public function searchDistrict($keywords='lc')
+    public function searchDistrict($keywords='lc',$parent_id)
     {
-        return $this->region->searchDistrict($keywords);
+        return json($this->region->searchDistrict($keywords,$parent_id));
     }
 
-    public function searchStreet($keywords='bs')
+    public function searchStreet($keywords='bs',$parent_id)
     {
-        return $this->region->searchStreet($keywords);
+        return json($this->region->searchStreet($keywords,$parent_id));
     }
 }

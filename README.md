@@ -28,7 +28,7 @@ Route::alias('region','\yupoxiong\region\Region');
 
 ##### 获取省
  * url `/region/getProvince`
- * 参数 province_id，不传默认获取全部省份，传入省份id获取该省份信息
+ * 参数 无
  
 ##### 获取市
  * url `/region/getCity`
@@ -45,11 +45,11 @@ Route::alias('region','\yupoxiong\region\Region');
 ##### 搜索地区
  * url `/region/searchRegion`
  * 参数 keywords，搜索地区的关键字，支持汉字，支持拼音，首字母
- * 参数 parent_id，搜索地区的父级，默认0为搜索省份
+ * 参数 parent_id，搜索地区的父级id，默认0为搜索省份
  
 ##### 搜索省
  * url `/region/getProvince`
- * 参数 province_id，不传默认获取全部省份，传入省份id获取该省份信息
+ * 参数 无
 
 ##### 搜索市
  * url `/region/getCity`
