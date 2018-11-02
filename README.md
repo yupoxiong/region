@@ -2,6 +2,9 @@
 
 [![](https://img.shields.io/badge/php->=5.6-blue.svg)](https://github.com/yupoxiong/region)
 
+
+> 支持TP5.0.*和TP5.1.*，搜索功能支持汉字，支持拼音，首字母搜索
+
 #### 安装
 
 ##### 第一步：安装扩展
@@ -43,8 +46,6 @@ Route::alias('region','\yupoxiong\region\Region');
 ##### 获取街道
  * url `/region/getStreet`
  * 参数 parent_id，传入所属区(县)id即可获取该市下面的街道
-
-> 搜索功能全部支持汉字，支持拼音，首字母搜索
 
 ##### 搜索地区
  * url `/region/searchRegion`
