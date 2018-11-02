@@ -83,3 +83,6 @@ Route::alias('region','\yupoxiong\region\Region');
     'field' => 'id,name',
 ]
 ```
+
+#### 测试相关
+安装配置好之后可以将tests/region.html放到public目录下访问测试扩展是否可用

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>省市区(县)联动选择示例</title>
+    <meta name="author" content="yupoxiong">
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row" style="margin-top: 20px">
+        <div class="col-md-12">
+            <form role="form">
+                <div class="form-group">
+                    <label for="province">省</label>
+                    <select id="province" class="form-control" onchange="getRegion(this.value,1)">
+                        <option>请选择省</option>
+                    </select>
+                    <label for="city">市</label>
+                    <select id="city" class="form-control" onchange="getRegion(this.value,2)">
+                        <option>请选择市</option>
+                    </select>
+                    <label for="district">区(县)</label>
+                    <select id="district" class="form-control" onchange="getRegion(this.value,3)">
+                        <option>请选择区(县)</option>
+                    </select>
+                    <label for="street">街道</label>
+                    <select id="street" class="form-control">
+                        <option>请选择街道</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        getRegion(0,0);
+    });
+
+    function getRegion(parent_id, id) {
+        var regionHtml = ['请选择省', '请选择市', '请选择区(县)', '请选择街道'];
+        var regionId = ['#province', '#city', '#district', '#street'];
+        $.post('/region/getRegion', {parent_id: parent_id}, function (result) {
+            var html = '<option>' + regionHtml[id] + '</option>';
+            $.each(result, function (index, item) {
+                html += '<option value="' + item.id + '">' + item.name + '</option>'
+            });
+            $(regionId[id]).html(html);
+        });
+    }
+</script>
+</body>
+</html>
