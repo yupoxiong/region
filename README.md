@@ -1,5 +1,7 @@
 # ThinkPHP省市区(县)街道四级联动扩展
 
+[![](https://img.shields.io/badge/php->=5.6-blue.svg)](https://github.com/yupoxiong/region)
+
 #### 安装
 
 ##### 第一步：安装扩展
