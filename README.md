@@ -41,27 +41,32 @@ Route::alias('region','\yupoxiong\region\Region');
 ##### 获取街道
  * url `/region/getStreet`
  * 参数 parent_id，传入所属区(县)id即可获取该市下面的街道
- 
+
+> 搜索功能全部支持汉字，支持拼音，首字母搜索
+
 ##### 搜索地区
  * url `/region/searchRegion`
- * 参数 keywords，搜索地区的关键字，支持汉字，支持拼音，首字母
+ * 参数 keywords，搜索地区的关键字
  * 参数 parent_id，搜索地区的父级id，默认0为搜索省份
  
 ##### 搜索省
  * url `/region/getProvince`
- * 参数 无
+ * 参数 keywords，搜索地区的关键字
 
 ##### 搜索市
  * url `/region/getCity`
- * 参数 parent_id，传入所属省id即可获取该省下面的市
+ * 参数 keywords，搜索地区的关键字
+ * 参数 parent_id，所属省id
 
 ##### 搜索区
  * url `/region/getDistrict`
- * 参数 parent_id，传入所属市id即可获取该市下面的区(县)
+ * 参数 keywords，搜索地区的关键字
+ * 参数 parent_id，所属市id
  
 ##### 搜索街道
  * url `/region/getStreet`
- * 参数 parent_id，传入所属区(县)id即可获取该市下面的街道
+ * 参数 keywords，搜索街道的关键字
+ * 参数 parent_id，所属区(县)id
  
 #### 可选配置
 可在配置文件中添加以下配置，5.0.*在`/application/config.php`中追加，5.1.*在`/config/app.php`中追加
