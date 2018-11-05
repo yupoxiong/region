@@ -14,8 +14,8 @@ composer require yupoxiong/region
 ```
 
 ##### 第二步：创建数据表
-* 方法一：用数据库工具将regions.sql(编码utf8mb4)导入到您的数据库，并修改表前缀。
-* 方法二：复制src/migrations目录下的数据库迁移文件到TP迁移目录(一般是/database/migrations/)，将regions.json复制到项目根目录，运行TP自带迁移命令创建表
+* 方法一：用数据库工具将`vendor/yupoxiong/region/regions.sql`(编码utf8mb4)导入到您的数据库，并修改表前缀。
+* 方法二：复制`vendor/yupoxiong/region/src/migrations`目录下的数据库迁移文件到TP迁移目录(一般是/database/migrations/)，将regions.json复制到项目根目录，运行TP自带迁移命令创建表
 
 
 #### 添加路由
@@ -53,21 +53,21 @@ Route::alias('region','\yupoxiong\region\Region');
  * 参数 parent_id，搜索地区的父级id，默认0为搜索省份
  
 ##### 搜索省
- * url `/region/getProvince`
+ * url `/region/searchProvince`
  * 参数 keywords，搜索地区的关键字
 
 ##### 搜索市
- * url `/region/getCity`
+ * url `/region/searchCity`
  * 参数 keywords，搜索地区的关键字
  * 参数 parent_id，所属省id
 
 ##### 搜索区
- * url `/region/getDistrict`
+ * url `/region/searchDistrict`
  * 参数 keywords，搜索地区的关键字
  * 参数 parent_id，所属市id
  
 ##### 搜索街道
- * url `/region/getStreet`
+ * url `/region/searchStreet`
  * 参数 keywords，搜索街道的关键字
  * 参数 parent_id，所属区(县)id
  
@@ -85,4 +85,4 @@ Route::alias('region','\yupoxiong\region\Region');
 ```
 
 #### 测试相关
-安装配置好之后可以将tests/region.html放到public目录下访问测试扩展是否可用
+安装配置好之后可以将`vendor/yupoxiong/region/tests/region.html`放到项目`public`目录下访问测试扩展是否可用
