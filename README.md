@@ -86,3 +86,6 @@ Route::alias('region','\yupoxiong\region\Region');
 
 #### 测试相关
 安装配置好之后可以将`vendor/yupoxiong/region/tests/region.html`放到项目`public`目录下访问测试扩展是否可用
+
+
+ [点此查看demo](https://bearadmin.yufuping.com/region.html)
