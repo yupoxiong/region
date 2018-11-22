@@ -10,11 +10,19 @@
     <link href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        .margin{
+            margin: 10px;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
     <div class="row" style="margin-top: 20px">
         <div class="col-md-12">
+
+            <h3>普通省市区(县)街道联动选择Demo</h3>
+
             <form role="form">
                 <div class="form-group">
                     <label for="province">省</label>
@@ -36,23 +44,67 @@
                 </div>
             </form>
         </div>
+
+        <div class="col-md-12">
+            <h3>搜索省Demo</h3>
+            <form role="form" onsubmit="return search()">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" id="keywords" class="form-control" placeholder="输入中文或拼音或首字母搜索" name="keywords">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-12">
+            <h3>搜索结果</h3>
+            <div class="row" >
+                <div class="col-md-12" id="result">
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <script>
+
+    var regionId = ['#province', '#city', '#district', '#street'];
+    var regionHtml = ['请选择省', '请选择市', '请选择区(县)', '请选择街道'];
+
     $(function () {
-        getRegion(0,0);
+        getRegion(0, 0);
     });
 
-    function getRegion(parent_id, id) {
-        var regionHtml = ['请选择省', '请选择市', '请选择区(县)', '请选择街道'];
-        var regionId = ['#province', '#city', '#district', '#street'];
-        $.post('/region/getRegion', {parent_id: parent_id}, function (result) {
-            var html = '<option>' + regionHtml[id] + '</option>';
+    function getRegion(parent_id, level) {
+        clearSon(level);
+        var html = '<option value="-1">' + regionHtml[level] + '</option>';
+        $.post('/region/getRegion', {parent_id: parent_id, level: level}, function (result) {
             $.each(result, function (index, item) {
                 html += '<option value="' + item.id + '">' + item.name + '</option>'
             });
-            $(regionId[id]).html(html);
+            $(regionId[level]).html(html);
         });
+    }
+
+    function clearSon(level) {
+        for(var i=level+1;i<=4;i++){
+            var html = '<option value="-1">' + regionHtml[i] + '</option>';
+            $(regionId[i]).html(html);
+        }
+    }
+
+    function search() {
+        var keywords = $('#keywords').val();
+        $.post('/region/searchRegion', {keywords: keywords,parent_id:0}, function (result) {
+            var html = '';
+            $.each(result, function (index, item) {
+                html+='<span class="margin">'+item.name+'</span>';
+            });
+            $('#result').html(html);
+        });
+
+        return false;
     }
 </script>
 </body>
