@@ -76,9 +76,9 @@ class CreateRegionTable extends Migrator
         static $start_time;
         if ($done > $total) return;
         if (empty($start_time)) $start_time = time();
-        $now = time();
-        $perc = (double)($done / $total);
-        $bar = floor($perc * $size);
+        $now        = time();
+        $percent    = (double)($done / $total);
+        $bar        = floor($percent * $size);
         $status_bar = "\r[";
         $status_bar .= str_repeat('=', $bar);
         if ($bar < $size) {
@@ -87,12 +87,12 @@ class CreateRegionTable extends Migrator
         } else {
             $status_bar .= '=';
         }
-        $disp = number_format($perc * 100, 0);
-        $status_bar .= "] $disp%  $done/$total";
-        $rate = ($now - $start_time) / $done;
-        $left = $total - $done;
-        $eta  = round($rate * $left, 2);
-        $elapsed = $now - $start_time;
+        $display    = number_format($percent * 100, 0);
+        $status_bar .= "] $display%  $done/$total";
+        $rate       = ($now - $start_time) / $done;
+        $left       = $total - $done;
+        $eta        = round($rate * $left, 2);
+        $elapsed    = $now - $start_time;
         $status_bar .= ' 预计剩余: ' . number_format($eta) . ' 秒. 已执行: ' . number_format($elapsed) . ' 秒.';
         echo "$status_bar  ";
         flush();
