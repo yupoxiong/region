@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * 省市区表迁移文件
+ */
 use think\Db;
 use think\migration\Migrator;
 use think\migration\db\Column;
@@ -39,15 +41,18 @@ class CreateRegionTable extends Migrator
         $zip_file   = app()->getRuntimePath() . 'region.json.zip';
         $json_file  = app()->getRuntimePath() . 'region.json';
         file_put_contents($zip_file, $online_zip);
+
         print ('正在解压json数据压缩包···' . "\n");
         $zipArc = new ZipArchive();
         $zipArc->open($zip_file);
         $zipArc->extractTo(app()->getRuntimePath());
+
         print ('正在读取json数据···' . "\n");
         $json  = file_get_contents($json_file);
         $data  = json_decode($json, true);
         $msg   = "\n" . '数据导入成功';
         $total = count($data) + 1;
+
         print ('正在导入数据···' . "\n");
         Db::startTrans();
         try {

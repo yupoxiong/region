@@ -1,6 +1,6 @@
 <?php
 /**
- * Region控制器
+ * 省市区控制器
  * @author yupoxiong<i@yufuping.com>
  * @date 2018/10/29
  */

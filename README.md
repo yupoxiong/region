@@ -3,7 +3,7 @@
 [![](https://img.shields.io/badge/php->=5.6-blue.svg)](https://github.com/yupoxiong/region)
 
 
-> 支持TP5.0.*和TP5.1.*，搜索功能支持汉字，支持拼音，首字母搜索
+> 支持TP5.0.*和TP5.1.*，搜索功能支持汉字，支持拼音，首字母搜索。
 
 #### 安装
 
