@@ -6,15 +6,15 @@
 
 namespace yupoxiong\region;
 
-use yupoxiong\region\model\Regions;
+use yupoxiong\region\model\Region;
 
-class Region
+class RegionController
 {
     protected $region;
 
     public function __construct()
     {
-        $this->region = new Regions();
+        $this->region = new Region();
     }
 
     public function getRegion($parent_id=0)

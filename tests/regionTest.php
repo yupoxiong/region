@@ -6,9 +6,9 @@
 
 require_once '../vendor/autoload.php';
 
-use yupoxiong\region\Region;
+use yupoxiong\region\RegionController;
 
-$region = new Region();
+$region = new RegionController();
 $result = $region->getRegion();
 
 var_dump($result);
