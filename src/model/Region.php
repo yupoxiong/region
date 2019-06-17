@@ -16,6 +16,7 @@ class Region extends Model
     protected $config = [
         'cache' => 20140210,
         'field' => 'id,name',
+        'order' => 'adcode asc',
     ];
 
     public function __construct($data = [])
@@ -23,7 +24,7 @@ class Region extends Model
         parent::__construct($data);
         $config = config('region');
         if ($config) {
-            if (!isset($config['cache']) || !isset($config['field'])) {
+            if (!isset($config['cache']) || !isset($config['field'])|| !isset($config['order'])) {
                 throw new \Exception('配置不完整');
             }
             $this->config = $config;
@@ -41,6 +42,7 @@ class Region extends Model
             ->where('parent_id', $parent_id)
             ->field($this->config['field'])
             ->cache($this->config['cache'])
+            ->order($this->config['order'])
             ->select();
     }
 
@@ -51,6 +53,7 @@ class Region extends Model
             ->where('level', 1)
             ->field($this->config['field'])
             ->cache($this->config['cache'])
+            ->order($this->config['order'])
             ->select();
     }
 
@@ -62,6 +65,7 @@ class Region extends Model
             ->where('level', 2)
             ->field($this->config['field'])
             ->cache($this->config['cache'])
+            ->order($this->config['order'])
             ->select();
     }
 
@@ -73,6 +77,7 @@ class Region extends Model
             ->where('level', 3)
             ->field($this->config['field'])
             ->cache($this->config['cache'])
+            ->order($this->config['order'])
             ->select();
     }
 
@@ -84,6 +89,7 @@ class Region extends Model
             ->where('level', 4)
             ->field($this->config['field'])
             ->cache($this->config['cache'])
+            ->order($this->config['order'])
             ->select();
     }
 
@@ -95,6 +101,7 @@ class Region extends Model
             ->whereLike('name|initial|pinyin', '%' . $keywords . '%')
             ->field($this->config['field'])
             ->cache($this->config['cache'])
+            ->order($this->config['order'])
             ->select();
     }
 
@@ -106,6 +113,7 @@ class Region extends Model
             ->whereLike('name|initial|pinyin', '%' . $keywords . '%')
             ->field($this->config['field'])
             ->cache($this->config['cache'])
+            ->order($this->config['order'])
             ->select();
     }
 
@@ -118,6 +126,7 @@ class Region extends Model
             ->whereLike('name|initial|pinyin', '%' . $keywords . '%')
             ->field($this->config['field'])
             ->cache($this->config['cache'])
+            ->order($this->config['order'])
             ->select();
     }
 
@@ -130,6 +139,7 @@ class Region extends Model
             ->whereLike('name|initial|pinyin', '%' . $keywords . '%')
             ->field($this->config['field'])
             ->cache($this->config['cache'])
+            ->order($this->config['order'])
             ->select();
     }
 
@@ -142,6 +152,7 @@ class Region extends Model
             ->whereLike('name|initial|pinyin', '%' . $keywords . '%')
             ->field($this->config['field'])
             ->cache($this->config['cache'])
+            ->order($this->config['order'])
             ->select();
     }
 

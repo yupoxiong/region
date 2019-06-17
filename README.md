@@ -78,8 +78,10 @@ Route::alias('region','\yupoxiong\region\RegionController');
 'region' => [
     //查询缓存秒数，false为不缓存
     'cache' => 20140210,
-    //查询字段，可选项：id,name,code,parent_id,initial,pingyin
+    //查询字段，可选项：id,name,code,parent_id,initial,pingyin,citycode,adcode,lng_lat
     'field' => 'id,name',
+    //排序，默认为adcode正序
+    'order' => 'adcode asc'
 ]
 ```
 
