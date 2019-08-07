@@ -6,7 +6,7 @@ use think\Db;
 use think\migration\Migrator;
 use think\migration\db\Column;
 
-class CreateRegionTable extends Migrator
+class Region extends Migrator
 {
     /**
      * 创建表并插入数据
@@ -46,6 +46,7 @@ class CreateRegionTable extends Migrator
         $zipArc = new ZipArchive();
         $zipArc->open($zip_file);
         $zipArc->extractTo(app()->getRuntimePath());
+        $zipArc->close();
 
         print ('正在读取json数据···' . "\n");
         $json  = file_get_contents($json_file);
@@ -66,6 +67,7 @@ class CreateRegionTable extends Migrator
             $msg = $e->getMessage();
         }
         print ($msg . "\n");
+        unset($data);
         unlink($zip_file);
         unlink($json_file);
     }
