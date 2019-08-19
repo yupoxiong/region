@@ -15,7 +15,12 @@ composer require yupoxiong/region
 
 ##### 第二步：创建数据表
 复制`vendor/yupoxiong/region/database/migrations`目录下的数据库迁移文件到TP迁移目录(一般是/database/migrations/)，然后运行TP自带迁移命令创建表。
+> TP5.1版本可以直接运行以下两个命令完成安装
+```
+php think region:publish
 
+php think region:migrate
+```
 
 #### 添加路由
 TP5.0在`/application/route.php`中追加，TP5.1在`/route/route.php`中追加。
