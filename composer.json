@@ -26,6 +26,15 @@
         "files": [
             "helper.php"
         ]
+    },
+    "extra": {
+        "think": {
+            "services": [
+                "yupoxiong\\region\\service\\Service"
+            ],
+            "config": {
+                "region": "config/config.php"
+            }
+        }
     }
-
 }
