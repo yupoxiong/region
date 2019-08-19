@@ -2,7 +2,6 @@
 /**
  * 省市区表迁移文件
  */
-use think\Db;
 use think\migration\Migrator;
 use think\migration\db\Column;
 
@@ -36,6 +35,9 @@ class Region extends Migrator
      */
     public function insertData()
     {
+
+        $is_tp6 = strpos(\think\App::VERSION, '6.0') !== false;
+
         print ('正在下载json数据压缩包···' . "\n");
         $online_zip = file_get_contents('http://json.think-region.yupoxiong.com/region.json.zip');
         $zip_file   = app()->getRuntimePath() . 'region.json.zip';
@@ -55,15 +57,38 @@ class Region extends Migrator
         $total = count($data) + 1;
 
         print ('正在导入数据···' . "\n");
-        Db::startTrans();
+
+        //判断TP5/TP6
+        if (!$is_tp6) {
+            print ('tp5');
+            \think\Db::startTrans();
+        }else{
+            print ('tp6');
+            \think\facade\Db::startTrans();
+        }
+
         try {
             foreach ($data as $key => $value) {
                 \yupoxiong\region\model\Region::create($value);
                 $this->showStatus($key + 1, $total, 10);
             }
-            Db::commit();
+
+            //判断TP5/TP6
+            if (!$is_tp6) {
+                \think\Db::commit();
+            }else{
+                \think\facade\Db::commit();
+            }
+
         } catch (\Exception $e) {
-            Db::rollback();
+
+            //判断TP5/TP6
+            if (!$is_tp6) {
+                \think\Db::rollback();
+            }else{
+                \think\facade\Db::rollback();
+            }
+
             $msg = $e->getMessage();
         }
         print ($msg . "\n");
