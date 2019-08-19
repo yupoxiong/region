@@ -12,8 +12,8 @@
     "authors": [
         {
             "name": "yupoxiong",
-            "email": "i@yufuping.com",
-            "homepage": "https://www.yufuping.com"
+            "email": "i@yupoxiong.com",
+            "homepage": "https://www.yupoxiong.com"
         }
     ],
     "require": {
@@ -33,7 +33,7 @@
                 "yupoxiong\\region\\service\\Service"
             ],
             "config": {
-                "region": "config/config.php"
+                "region": "config/region.php"
             }
         }
     }
