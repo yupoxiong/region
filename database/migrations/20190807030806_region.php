@@ -13,8 +13,8 @@ class Region extends Migrator
      */
     public function change()
     {
-        $region = $this->table('region', ['comment' => '省市区表', 'engine' => 'InnoDB', 'encoding' => 'utf8mb4', 'collation' => 'utf8mb4_unicode_ci']);
-        $region->addColumn('parent_id', 'integer', ['limit' => 11, 'default' => 0, 'comment' => '父级ID'])
+        $region = $this->table('region', ['comment' => '省市区', 'engine' => 'InnoDB', 'encoding' => 'utf8mb4', 'collation' => 'utf8mb4_unicode_ci']);
+        $region->addColumn('parent_id', 'integer', ['limit' => 11, 'default' => 0, 'comment' => '父级'])
             ->addColumn('level', 'boolean', ['limit' => 1, 'default' => 1, 'comment' => '等级'])
             ->addColumn('name', 'string', ['limit' => 50, 'default' => '', 'comment' => '名称'])
             ->addColumn('initial', 'string', ['limit' => 50, 'default' => '', 'comment' => '首字母'])
@@ -67,7 +67,9 @@ class Region extends Migrator
             $msg = $e->getMessage();
         }
         print ($msg . "\n");
+        unset($total);
         unset($data);
+        unset($json);
         unlink($zip_file);
         unlink($json_file);
     }

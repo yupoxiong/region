@@ -22,6 +22,10 @@
     "autoload": {
         "psr-4": {
             "yupoxiong\\region\\": "src"
-        }
+        },
+        "files": [
+            "helper.php"
+        ]
     }
+
 }

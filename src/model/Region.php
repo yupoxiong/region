@@ -22,7 +22,7 @@ class Region extends Model
     public function __construct($data = [])
     {
         parent::__construct($data);
-        $config = config('region');
+        $config = config('region.');
         if ($config) {
             if (!isset($config['cache']) || !isset($config['field'])|| !isset($config['order'])) {
                 throw new \Exception('配置不完整');

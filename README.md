@@ -14,7 +14,7 @@ composer require yupoxiong/region
 ```
 
 ##### 第二步：创建数据表
-复制`vendor/yupoxiong/region/src/migrations`目录下的数据库迁移文件到TP迁移目录(一般是/database/migrations/)，然后运行TP自带迁移命令创建表。
+复制`vendor/yupoxiong/region/database/migrations`目录下的数据库迁移文件到TP迁移目录(一般是/database/migrations/)，然后运行TP自带迁移命令创建表。
 
 
 #### 添加路由
