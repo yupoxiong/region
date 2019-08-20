@@ -36,18 +36,27 @@ class Region extends Migrator
     public function insertData()
     {
 
-        $is_tp6 = strpos(\think\App::VERSION, '6.0') !== false;
+        //兼容TP5.0
+        if(defined('THINK_VERSION')){
+            $is_tp6 = false;
+            $runtime_path = RUNTIME_PATH;
+        }else{
+            $is_tp6 = strpos(\think\App::VERSION, '6.0') !== false;
+            $runtime_path = app()->getRuntimePath();
+        }
+
+
 
         print ('正在下载json数据压缩包···' . "\n");
         $online_zip = file_get_contents('http://json.think-region.yupoxiong.com/region.json.zip');
-        $zip_file   = app()->getRuntimePath() . 'region.json.zip';
-        $json_file  = app()->getRuntimePath() . 'region.json';
+        $zip_file   =  $runtime_path. 'region.json.zip';
+        $json_file  = $runtime_path . 'region.json';
         file_put_contents($zip_file, $online_zip);
 
         print ('正在解压json数据压缩包···' . "\n");
         $zipArc = new ZipArchive();
         $zipArc->open($zip_file);
-        $zipArc->extractTo(app()->getRuntimePath());
+        $zipArc->extractTo($runtime_path);
         $zipArc->close();
 
         print ('正在读取json数据···' . "\n");
