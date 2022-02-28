@@ -2,6 +2,7 @@
 /**
  * 省市区表迁移文件
  */
+
 use think\migration\Migrator;
 use think\migration\db\Column;
 
@@ -37,19 +38,18 @@ class Region extends Migrator
     {
 
         //兼容TP5.0
-        if(defined('THINK_VERSION')){
-            $is_tp6 = false;
+        if (defined('THINK_VERSION')) {
+            $is_tp6       = false;
             $runtime_path = RUNTIME_PATH;
-        }else{
-            $is_tp6 = strpos(\think\App::VERSION, '6.0') !== false;
+        } else {
+            $is_tp6       = strpos(\think\App::VERSION, '6.0') !== false;
             $runtime_path = app()->getRuntimePath();
         }
 
 
-
         print ('正在下载json数据压缩包···' . "\n");
-        $online_zip = file_get_contents('http://json.think-region.yupoxiong.com/region.json.zip');
-        $zip_file   =  $runtime_path. 'region.json.zip';
+        $online_zip = file_get_contents('http://json.think-region.yupoxiong.com/region.json.zip?v=' . uniqid('region', true));
+        $zip_file   = $runtime_path . 'region.json.zip';
         $json_file  = $runtime_path . 'region.json';
         file_put_contents($zip_file, $online_zip);
 
@@ -71,7 +71,7 @@ class Region extends Migrator
         if (!$is_tp6) {
             print ('tp5');
             \think\Db::startTrans();
-        }else{
+        } else {
             print ('tp6');
             \think\facade\Db::startTrans();
         }
@@ -85,7 +85,7 @@ class Region extends Migrator
             //判断TP5/TP6
             if (!$is_tp6) {
                 \think\Db::commit();
-            }else{
+            } else {
                 \think\facade\Db::commit();
             }
 
@@ -94,7 +94,7 @@ class Region extends Migrator
             //判断TP5/TP6
             if (!$is_tp6) {
                 \think\Db::rollback();
-            }else{
+            } else {
                 \think\facade\Db::rollback();
             }
 
