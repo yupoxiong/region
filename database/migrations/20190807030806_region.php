@@ -42,7 +42,7 @@ class Region extends Migrator
             $is_tp6       = false;
             $runtime_path = RUNTIME_PATH;
         } else {
-            $is_tp6       = strpos(\think\App::VERSION, '6.0') !== false;
+            $is_tp6       = strpos(\think\App::VERSION, '5.1') !== 0;
             $runtime_path = app()->getRuntimePath();
         }
 

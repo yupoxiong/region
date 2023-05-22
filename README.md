@@ -10,6 +10,9 @@
 ##### 第一步：安装扩展
 Composer 运行扩展安装命令
 ```
+# TP数据库迁移工具
+composer require topthink/think-migration
+# 本扩展
 composer require yupoxiong/region
 ```
 
