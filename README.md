@@ -128,4 +128,4 @@ TP5.1 和 TP6.0 可以在开发中直接使用以下代码获取数据：
 #### 测试相关
 安装配置好之后可以将`vendor/yupoxiong/region/tests/region.html`放到项目`public`目录下访问测试扩展是否可用
 
- [点此查看demo](https://bearadmin.yufuping.com/region.html)
+ [点此查看demo](https://demo.bearadmin.com/region.html)
